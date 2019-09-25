@@ -27,6 +27,9 @@ class NewTaskInput extends Component {
             <div>
                 <input onChange={e => this.handleInputChange(e.target.value)} type='text'></input>
                 <button onClick={e => this.handleListChange(this.state.myInput)}>Add</button>
+                <div>
+                    {this.state.toDoList.map(e => <h2>{e}</h2>)}
+                </div>
             </div>
         )
     }
