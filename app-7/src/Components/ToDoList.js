@@ -1,15 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 
-class ToDoList extends Component {
-    render(){
+const ToDoList = (props) => {
         return(
             <div>
-                {/* <div>
-                    {this.state.toDoList.map(e => <h2>{e}</h2>)}
-                </div> */}
+               <h2>{props.myList}</h2>
             </div>
         )
-    }
 }
 
 export default ToDoList;

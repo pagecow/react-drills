@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ToDoList from './ToDoList'
 
 class NewTaskInput extends Component {
     constructor(){
@@ -28,7 +29,7 @@ class NewTaskInput extends Component {
                 <input onChange={e => this.handleInputChange(e.target.value)} type='text'></input>
                 <button onClick={e => this.handleListChange(this.state.myInput)}>Add</button>
                 <div>
-                    {this.state.toDoList.map(e => <h2>{e}</h2>)}
+                    {this.state.toDoList.map(e => <ToDoList myList = {e} />)}
                 </div>
             </div>
         )
