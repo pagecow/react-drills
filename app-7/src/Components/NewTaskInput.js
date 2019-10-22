@@ -1,43 +1,24 @@
-import React, { Component } from "react";
-import ToDoList from './ToDoList';
+import React, { useState } from "react";
 
-class NewTaskInput extends Component {
-    constructor(){
-        super()
+const NewTaskInput = () => {
+    const [task, setTask] = useState([]);
+    const [input, setInput] = useState('');
 
-        this.state = {
-            myInput: '',
-            toDoList: []
-        }
+    const updateList = () => {
+        task.push(input);
+        setInput('');
     }
 
-    handleInputChange = (value) => {
-        this.setState({
-            myInput: value
-        })
-    }
+    const mappedItems = task.map(e => {return(<h3>{e}</h3>)})
 
-    handleListChange = (value) => {
-        this.setState({
-            toDoList: [...this.state.toDoList, value]
-        })
-    }
-    
-    render(){
-        return(
-            <div>
-                <input onChange={e => this.handleInputChange(e.target.value)} type='text'></input>
-                <button onClick={e => this.handleListChange(this.state.myInput)}>Add</button>
-                
-                {this.state.toDoList.map(e => <ToDoList myList={e}/>)}
-               
-                {/* <ToDoList 
-                    myList={this.state.toDoList}/> */}
-                
-                
-            </div>
-        )
-    }
+    return(
+        <div>
+            <input onChange={e => setInput(e.target.value)}/>
+            <button onClick={updateList}>Add</button>
+
+            {mappedItems}
+        </div>
+    )
 }
 
 export default NewTaskInput;

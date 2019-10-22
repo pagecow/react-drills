@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class Header extends Component {
-    render(){
-        return(
-            <h1>My to do list:</h1>
-        )
-    }
+const Header = () => {
+    const [header, setHeader] = useState('My to-do list:');
+
+    return(
+        <h1>{header}</h1>
+    )
 }
 
 export default Header;
