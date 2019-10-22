@@ -1,42 +1,30 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-class ToDoList extends Component {
-    constructor(){
-        super()
+const ToDoList = () => {
+    const [name, setName] = useState('');
+    const [nameList, setNameList] = useState([]);
 
-        this.state = {
-            myTaskInputs: '',
-            myCurrentTasks: []
-        }
+    const addName = () => {
+        nameList.push(name);
+        setName('')
     }
 
-    handleChange = (value) => {
-        this.setState({
-            myTaskInputs: value
-        })
-    }
-
-    handleCurrentTasks = (value) => {
-        this.setState({
-            myCurrentTasks: [...this.state.myCurrentTasks, value]
-        })
-    }
-
-    render(){
-        console.log(this.state.myCurrentTasks)
+    const mappedNames = nameList.map((e) => {
         return(
-            <div>
-                <h1>My to-do list:</h1>
-                <input onChange={e => this.handleChange(e.target.value)} type='text'/>
-                <button onClick={e => this.handleCurrentTasks(this.state.myTaskInputs)}>Add</button>
-                <div>               
-                {this.state.myCurrentTasks
-                        .map(e => {
-                            return <h2>{e}</h2>
-                })}</div>
-            </div>
+            <p>{e}</p>
         )
-    }
+    })
+
+    return (
+        <div>
+            <h1>My to-do list:</h1>
+
+            <input onChange={(e) => setName(e.target.value)} value={name}/>
+            <button onClick={addName}>Add to List</button>
+
+            {mappedNames}
+        </div>
+    )
 }
 
 export default ToDoList
