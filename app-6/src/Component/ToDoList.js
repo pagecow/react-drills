@@ -29,7 +29,8 @@ class ToDoList extends Component {
                 <h1>My to-do list:</h1>
                 <input onChange={e => this.handleChange(e.target.value)} type='text'/>
                 <button onClick={e => this.handleCurrentTasks(this.state.myTaskInputs)}>Add</button>
-                <div>{this.state.myCurrentTasks
+                <div>               
+                {this.state.myCurrentTasks
                         .map(e => {
                             return <h2>{e}</h2>
                 })}</div>

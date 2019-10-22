@@ -1,30 +1,14 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-class ParentComponent extends Component {
-    constructor(){
-        super();
+const ParentComponent = () => {
+    const [words, setWords] = useState('');
 
-        this.state = {
-            myInput: ''
-        }
-    }
-
-    changeHandler = (value) => {
-        this.setState({
-            myInput: value
-        })
-    }
-
-    render(){
-        return(
-            <div>
-                <input onChange={(e) => this.changeHandler(e.target.value)} type='text'/>
-                <p>{this.state.myInput}</p>
-            </div>
+    return(
+        <div>
+            <input onChange={(e) => setWords(e.target.value)} type='text'/>
+            <p>{words}</p>
+        </div>
         )
     }
-
-
-}
 
 export default ParentComponent
