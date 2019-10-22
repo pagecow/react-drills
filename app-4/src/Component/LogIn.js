@@ -1,40 +1,24 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-class LogIn extends Component {
-    constructor(){
-        super();
+const LogIn = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-        this.state = {
-            username: '',
-            password: ''
-        }
+    console.log(username);
+    console.log(password)
+
+    const myAlert = () => {
+        return alert(`Username: ${username} Password: ${password}`)
     }
 
-    handleUsernameChange = (value) => {
-        this.setState({
-            username: value,
-        })
-    }
+    return(
+        <div>
+            <input onChange={(e) => setUsername(e.target.value)} placeholder="username"/>
+            <input onChange={(e) => setPassword(e.target.value)} placeholder="password"/>
 
-    handlePasswordChange = (value) => {
-        this.setState({
-            password: value,
-        })
-    }
-
-    handleLogin = () => {
-        alert(`Username: ${this.state.username} Password ${this.state.password}`)
-    }
-
-    render() {
-        return(
-            <div>
-                <input className='username' onChange={(e) => this.handleUsernameChange(e.target.value)} type='text'/>
-                <input className='password' onChange={(e) => this.handlePasswordChange(e.target.value)} type='text'/>
-                <button onClick={this.handleLogin}>Log In</button>
-            </div>
-        )
-    }
+            <button onClick={() => myAlert()}>Login</button>
+        </div>
+    )
 }
 
 export default LogIn
